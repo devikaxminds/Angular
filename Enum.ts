@@ -1,3 +1,4 @@
+export {};
 // 1. Define Enum for Product Categories
 enum Category {
   Fruits = "Fruits",
@@ -17,12 +18,14 @@ let cartsList: Cart[] = [
 ];
 
 // 4. Display all elements using a for...of loop
-let totalCost = 0;
 for (const [product, quantity, price, category] of cartsList) {
-  const cost = quantity * price;
-  totalCost += cost;
-  console.log(`Product: ${product}, Quantity: ${quantity}, Price: ${price}, Category: ${category}, Cost: ${cost}`);
+  console.log(`Product: ${product}, Quantity: ${quantity}, Price: ${price}, Category: ${category}`);
 }
+
+// Calculate total cost using reduce
+let totalCost: number = cartsList.reduce((acc, [, quantity, price]) => {
+  return acc + (quantity * price);
+}, 0);
 
 // 5. Print total cost
 console.log(`Total Cost: ${totalCost}`);

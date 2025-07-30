@@ -13,12 +13,14 @@ var cartsList = [
     ["Headphones", 1, 1500, Category.Electronics]
 ];
 // 4. Display all elements using a for...of loop
-var totalCost = 0;
 for (var _i = 0, cartsList_1 = cartsList; _i < cartsList_1.length; _i++) {
     var _a = cartsList_1[_i], product = _a[0], quantity = _a[1], price = _a[2], category = _a[3];
-    var cost = quantity * price;
-    totalCost += cost;
-    console.log("Product: ".concat(product, ", Quantity: ").concat(quantity, ", Price: ").concat(price, ", Category: ").concat(category, ", Cost: ").concat(cost));
+    console.log("Product: ".concat(product, ", Quantity: ").concat(quantity, ", Price: ").concat(price, ", Category: ").concat(category));
 }
+// Calculate total cost using reduce
+var totalCost = cartsList.reduce(function (acc, _a) {
+    var quantity = _a[1], price = _a[2];
+    return acc + (quantity * price);
+}, 0);
 // 5. Print total cost
 console.log("Total Cost: ".concat(totalCost));
